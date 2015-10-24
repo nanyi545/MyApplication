@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">demos1</string>
+
+    <string name="hello_world">from this activity</string>
+    <string name="MaterialTitle">material design activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">MP-Chart+scrolView</string>
+    <string name="title_section4">Notif+Ripple+style+DispSize</string>
+    <string name="title_section5">eventBus+customView</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="title_activity_material_design">MaterialDesignActivity</string>
+    <string name="title_activity_mat_design_panel">MatDesignPanelActivity</string>
+    <string name="title_activity_elevation">ElevationActivity</string>
+
+    <!--自定义view:MyView1-->
+    <string name="circle">圆形</string>
+    <string name="square">正方形</string>
+    <string name="rect">四边形</string>
+    <string name="round_rect">圆角四边形</string>
+    <string name="oval">椭圆</string>
+    <string name="triangle">三角形</string>
+    <string name="pentagon">五角星</string>
+    <string name="title_activity_recycler_view2">RecyclerViewActivity2</string>
+    <string name="title_activity_card_view">CardView</string>
+    <string name="title_activity_tint">TintActivity</string>
+    <string name="title_activity_out_line">OutLineActivity</string>
+
+
+</resources>

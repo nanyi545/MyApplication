@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="test1.nh.com.demos1" >
+
+    <!-- android:theme="@style/AppTheme" -->
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activities.MainActivity_from"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.DrawerActivity"
+            android:label="@string/title_activity_drawer" >
+        </activity>
+        <activity
+            android:name=".activities.matDesign.RecyclerViewActivity"
+            android:label="@string/title_activity_material_design"
+            android:theme="@style/MDTheme" > <!-- divider line is defined in this theme -->
+            <!-- android:theme="@style/CrazyTheme" -->
+        </activity>
+        <activity
+            android:name=".activities.matDesign.MatDesignPanelActivity"
+            android:label="@string/title_activity_mat_design_panel" >
+        </activity>
+        <activity
+            android:name=".activities.matDesign.ElevationActivity"
+            android:label="@string/title_activity_elevation"
+            android:theme="@style/MDTheme1" >
+        </activity>
+        <activity
+            android:name=".activities.matDesign.RecyclerViewActivity2"
+            android:label="@string/title_activity_recycler_view2"
+            android:theme="@style/MDTheme" > <!-- divider line is defined in this theme -->
+        </activity>
+        <activity
+            android:name=".activities.matDesign.CardViewActivity"
+            android:label="@string/title_activity_card_view"
+            android:theme="@style/MDTheme1" >
+        </activity>
+        <activity
+            android:name=".activities.matDesign.TintActivity"
+            android:label="@string/title_activity_tint" >
+        </activity>
+        <activity
+            android:name=".activities.matDesign.OutLineActivity"
+            android:label="@string/title_activity_out_line" >
+        </activity>
+    </application>
+
+</manifest>
