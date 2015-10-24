@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">demos1</string>
+    <string name="app_name">安卓开发</string>
 
     <string name="hello_world">from this activity</string>
     <string name="MaterialTitle">material design activity</string>
@@ -21,13 +21,13 @@
     <string name="title_activity_elevation">ElevationActivity</string>
 
     <!--自定义view:MyView1-->
-    <string name="circle">circle</string>
-    <string name="square">square</string>
-    <string name="rect">rect</string>
-    <string name="round_rect">round_rect</string>
-    <string name="oval">oval</string>
-    <string name="triangle">triangle</string>
-    <string name="pentagon">pentagon</string>
+    <string name="circle">圆形</string>
+    <string name="square">正方形</string>
+    <string name="rect">四边形</string>
+    <string name="round_rect">圆角四边形</string>
+    <string name="oval">椭圆</string>
+    <string name="triangle">三角形</string>
+    <string name="pentagon">五角星</string>
 
 
     <string name="title_activity_recycler_view2">RecyclerViewActivity2</string>
