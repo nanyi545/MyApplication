@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import test1.nh.com.demos1.R;
+import test1.nh.com.demos1.fragments.AnimationFragment;
 import test1.nh.com.demos1.fragments.EventBusDemoFragment;
 import test1.nh.com.demos1.fragments.MPchartDemoFragment;
 import test1.nh.com.demos1.fragments.NavigationDrawerFragment;
@@ -67,6 +68,11 @@ public class DrawerActivity extends AppCompatActivity
             case 2:  //position+1=3    section 3 MPchartDemoFragment
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, MPchartDemoFragment.newInstance(position + 1))
+                        .commit();
+                break;
+            case 1:  //position+1=2    section 2 AnimationFragment
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, AnimationFragment.newInstance(position + 1))
                         .commit();
                 break;
             default:  //其它情况

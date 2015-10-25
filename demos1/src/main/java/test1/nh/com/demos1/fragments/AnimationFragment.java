@@ -3,6 +3,7 @@ package test1.nh.com.demos1.fragments;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -33,9 +34,9 @@ import test1.nh.com.demos1.utils.ShapeHolder;
 public class AnimationFragment extends Fragment {
 
 
-
     private Context mcontext;
 
+    @TargetApi(11)
     public class MyAnimationView extends View implements ValueAnimator.AnimatorUpdateListener {
 
         public final ArrayList<ShapeHolder> balls = new ArrayList<ShapeHolder>();

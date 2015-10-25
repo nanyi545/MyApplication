@@ -7,7 +7,7 @@
     <string name="title_activity_drawer">DrawerActivity</string>
 
     <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
+    <string name="title_section2">Animations</string>
     <string name="title_section3">MP-Chart+scrolView</string>
     <string name="title_section4">Notif+Ripple+style+DispSize</string>
     <string name="title_section5">eventBus+customView</string>
