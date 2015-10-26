@@ -20,6 +20,7 @@ import test1.nh.com.demos1.fragments.MPchartDemoFragment;
 import test1.nh.com.demos1.fragments.NavigationDrawerFragment;
 import test1.nh.com.demos1.fragments.Section4Fragment;
 import test1.nh.com.demos1.fragments.SectionFragment;
+import test1.nh.com.demos1.fragments.SocketIOFragment;
 
 public class DrawerActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -55,6 +56,11 @@ public class DrawerActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (position){
+            case 5:  //position+1=6    section 6 -->SocketIOFragment
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, SocketIOFragment.newInstance(position + 1))
+                        .commit();
+                break;
             case 4:  //position+1=5    section 5 -->EventBusDemoFragment
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, EventBusDemoFragment.newInstance(position + 1))

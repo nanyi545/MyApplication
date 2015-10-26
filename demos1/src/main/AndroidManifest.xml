@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test1.nh.com.demos1" >
 
+
+    <uses-permission android:name="android.permission.INTERNET" ></uses-permission>
+
+
     <!-- android:theme="@style/AppTheme" -->
     <application
         android:allowBackup="true"
