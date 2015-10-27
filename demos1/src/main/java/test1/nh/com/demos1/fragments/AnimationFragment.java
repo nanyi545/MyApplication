@@ -14,7 +14,6 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -207,7 +206,7 @@ public class AnimationFragment extends Fragment {
             // prints the current "y" value
             // getAnimatedValue() method access PropertyValuesHolder (property/value sets being animated)
             // field in the ValueAnimator class
-            Log.i("AAA", (animation.getAnimatedValue()).toString());
+//            Log.i("AAA", (animation.getAnimatedValue()).toString());
         }
 
     }
@@ -241,9 +240,6 @@ public class AnimationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // get section id from intent
-        // getArg--return the Bundle
-        int section_number=getArguments().getInt(ARG_SECTION_NUMBER);
 
         mcontext=getActivity();
 
@@ -273,9 +269,17 @@ public class AnimationFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //设置activity label
-        ((DrawerActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        //设置activity label------------
+
+        try {
+            ((DrawerActivity) activity).onSectionAttached(
+                    getArguments().getInt(ARG_SECTION_NUMBER));
+        } catch (Exception e) {  // in case this fragment is called not by  DrawerActivity
+            e.printStackTrace();
+//            Log.i("AAA","ANIMATIONfragment called not by DrawerActivity");
+        }
+
+
     }
 
 

@@ -18,6 +18,8 @@ public class MatDesignPanelActivity extends AppCompatActivity {
     Button b_cardView1;
     Button b_tint;
     Button b_outline;
+    Button b_vpDemo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,17 @@ public class MatDesignPanelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mIntent=new Intent(MatDesignPanelActivity.this,OutLineActivity.class);
+                startActivity(mIntent);
+            }
+        });
+
+
+        // view pager----->
+        b_vpDemo=(Button)findViewById(R.id.button16);
+        b_vpDemo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent=new Intent(MatDesignPanelActivity.this,VPActivity.class);
                 startActivity(mIntent);
             }
         });

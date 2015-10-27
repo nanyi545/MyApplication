@@ -86,9 +86,16 @@ public class MPchartDemoFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         //设置activity label
-        ((DrawerActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
         mContext=activity;
+
+        try {
+            ((DrawerActivity) activity).onSectionAttached(
+                    getArguments().getInt(ARG_SECTION_NUMBER));
+        } catch (Exception e) {
+            e.printStackTrace();
+//            Log.i("AAA", "MPCHARTfragment called not by DrawerActivity");
+        }
+
     }
 
 

@@ -35,6 +35,7 @@
     <string name="title_activity_card_view">CardView</string>
     <string name="title_activity_tint">TintActivity</string>
     <string name="title_activity_out_line">OutLineActivity</string>
+    <string name="title_activity_vp">VPActivity</string>
 
 
 </resources>
