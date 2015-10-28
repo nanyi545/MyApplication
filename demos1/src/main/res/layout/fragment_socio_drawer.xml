@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/Red200"
-        >
+        android:id="@+id/linearLayout2">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,38 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---"
+        android:background="@color/Purple100"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentLeft="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start Server"
+        android:id="@+id/button17"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="create and read data"
+        android:id="@+id/button18"
+        android:layout_below="@+id/button17"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ReadInt"
+        android:id="@+id/button19"
+        android:layout_alignTop="@+id/button18"
+        android:layout_toRightOf="@+id/button18" />
 
 
 </RelativeLayout>
