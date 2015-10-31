@@ -12,6 +12,7 @@
     <string name="title_section4">Notif+Ripple+style+DispSize</string>
     <string name="title_section5">eventBus+customView</string>
     <string name="title_section6">socket fragment</string>
+    <string name="title_section7">gravity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

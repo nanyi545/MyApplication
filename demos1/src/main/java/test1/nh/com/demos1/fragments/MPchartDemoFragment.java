@@ -9,13 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -39,9 +47,12 @@ public class MPchartDemoFragment extends Fragment {
     private LineChart mChart;
     private LineData mLdata;
 
-
     private LineChart mChart2;
     private LineData mLdata2;
+
+    private BarChart mBarChart;
+    private BarData mBardata;
+
 
 
     //empty constructor
@@ -70,13 +81,21 @@ public class MPchartDemoFragment extends Fragment {
         mChart = (LineChart) rootView.findViewById(R.id.chart1);
         initChart(mChart);
         mLdata=initData1();
-        plotLine1(mChart,mLdata);
+        plotLine1(mChart, mLdata);
 
         // plot 2
         mChart2 = (LineChart) rootView.findViewById(R.id.chart2);
         initChart(mChart2);
         mLdata2=initData2();
         plotLine1(mChart2, mLdata2);
+
+        // plot 3-----barChart----
+        mBarChart=(BarChart) rootView.findViewById(R.id.barChart1);
+        initBarChart(mBarChart);
+        int[] counts=new int[]{1,3,4,5,7,14,18,19,13,6,3,1};
+        mBardata=generateBarData(1,counts, 12);
+        mBarChart.setData(mBardata);
+
 
         return rootView;
     }
@@ -88,7 +107,7 @@ public class MPchartDemoFragment extends Fragment {
         //设置activity label
         mContext=activity;
 
-        try {
+        try {    //  called by DrawerActivity
             ((DrawerActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         } catch (Exception e) {
@@ -99,6 +118,22 @@ public class MPchartDemoFragment extends Fragment {
     }
 
 
+
+    private void initBarChart(BarChart barChart){
+
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setDrawGridLines(false);// grid disappear
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM); //x-axis at bottom
+
+        YAxis leftAxis = barChart.getAxisLeft();
+        leftAxis.setDrawGridLines(false);// grid disappear
+        YAxis rightAxis = barChart.getAxisRight();
+        rightAxis.setDrawGridLines(false);// grid disappear
+
+        barChart.setDrawGridBackground(false);
+        barChart.setDrawBarShadow(false);
+
+    }
 
     private void initChart(LineChart mChart){
         mChart.setDrawBorders(true);//?? drawing the chart borders (lines surrounding the chart).
@@ -195,6 +230,83 @@ public class MPchartDemoFragment extends Fragment {
 
         mChart.invalidate(); // refresh
     }
+
+
+
+    /**
+     *  generate barChart data
+     */
+    protected BarData generateBarData(int dataSets, int[] counts, int count) {
+
+        ArrayList<BarDataSet> sets = new ArrayList<BarDataSet>();
+
+        for(int i = 0; i < dataSets; i++) {  // sets of data, usually=1
+
+            ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
+
+//            entries = FileUtils.loadEntriesFromAssets(getActivity().getAssets(), "stacked_bars.txt");
+
+            for(int j = 0; j < count; j++) {    // entries for one particular set
+                entries.add(new BarEntry((float) counts[j], j));
+            }
+
+            BarDataSet ds = new BarDataSet(entries, getLabel(i));
+            int[] colors=new int[]{
+                    Color.rgb(192, 255, 140)
+            };
+
+            ds.setColors(colors);  //ColorTemplate.VORDIPLOM_COLORS
+            sets.add(ds);
+        }
+
+        BarData d = new BarData(ChartData.generateXVals(0, count), sets);
+        return d;
+    }
+
+
+    /**
+     * generates less data (1 DataSet, 4 values)
+     * @return
+     */
+    protected PieData generatePieData() {
+
+        int count = 4;
+
+        ArrayList<Entry> entries1 = new ArrayList<Entry>();
+        ArrayList<String> xVals = new ArrayList<String>();
+
+        xVals.add("Quarter 1");
+        xVals.add("Quarter 2");
+        xVals.add("Quarter 3");
+        xVals.add("Quarter 4");
+
+        for(int i = 0; i < count; i++) {
+            xVals.add("entry" + (i+1));
+
+            entries1.add(new Entry((float) (Math.random() * 60) + 40, i));
+        }
+
+        PieDataSet ds1 = new PieDataSet(entries1, "Quarterly Revenues 2015");
+        ds1.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        ds1.setSliceSpace(2f);
+        ds1.setValueTextColor(Color.WHITE);
+        ds1.setValueTextSize(12f);
+
+        PieData d = new PieData(xVals, ds1);
+
+        return d;
+    }
+
+
+    private String[] mLabels = new String[] { "Company A", "Company B", "Company C", "Company D", "Company E", "Company F" };
+//    private String[] mXVals = new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec" };
+
+    private String getLabel(int i) {
+        return mLabels[i];
+    }
+
+
+
 
 
 }

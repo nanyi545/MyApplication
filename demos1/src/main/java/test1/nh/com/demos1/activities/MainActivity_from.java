@@ -238,6 +238,8 @@ public class MainActivity_from extends AppCompatActivity {
             Date dAlarmDate=sdf.parse(mDate);
         } catch (ParseException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         timeShow.setText("time:"+mDate);

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import test1.nh.com.demos1.R;
 import test1.nh.com.demos1.fragments.AnimationFragment;
 import test1.nh.com.demos1.fragments.EventBusDemoFragment;
+import test1.nh.com.demos1.fragments.GravityFragment;
 import test1.nh.com.demos1.fragments.MPchartDemoFragment;
 import test1.nh.com.demos1.fragments.NavigationDrawerFragment;
 import test1.nh.com.demos1.fragments.Section4Fragment;
@@ -56,6 +57,11 @@ public class DrawerActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (position){
+            case 6:  //position+1=7    section 7 -->GravityFragment
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, GravityFragment.newInstance(position + 1))
+                        .commit();
+                break;
             case 5:  //position+1=6    section 6 -->SocketIOFragment
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, SocketIOFragment.newInstance(position + 1))

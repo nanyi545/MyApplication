@@ -1,7 +1,9 @@
+
 package test1.nh.com.demos1.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -13,6 +15,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -20,14 +30,155 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
 
+import de.greenrobot.event.EventBus;
 import test1.nh.com.demos1.R;
 import test1.nh.com.demos1.activities.DrawerActivity;
+import test1.nh.com.demos1.eventBusDemo.AddProEvent;
 
 /**
  * Created by Administrator on 15-9-30.
  */
 public class SocketIOFragment extends Fragment {
+
+    /**
+     * eventBus handler, handle-->AddProEvent
+     * @param addEvent
+     */
+    public void onEventMainThread(AddProEvent addEvent){
+        plotLine1(mChart,mLdata);
+    }
+
+
+
+    // read 1 parcel
+    // firstInt---- -7007 waveform data------->OK
+    // firstInt---- -6006 alarm data
+    // firstInt---- -5005 statistics data
+    private void read1_2() throws IOException {
+        emptyBuffer(); // clear buffer before reading
+        int currentP=0;
+        while (currentInt != -10086) {
+            currentInt = data_in.readInt();
+            inputBuffer[currentP]=currentInt;
+            currentP=currentP+1;
+        }
+        parseParcel();
+        mLdata=initData2();
+
+        AddProEvent addEvent=new AddProEvent();
+        EventBus.getDefault().post(addEvent); // post  AddProEvent-----TO ask UI to plot line---
+
+        resetCurrent(); // so that the next parcel could be read
+    }
+
+
+
+    LineChart mChart;
+    private LineData mLdata;
+
+    private void initChart(LineChart mChart){
+        mChart.setDrawBorders(true);//?? drawing the chart borders (lines surrounding the chart).
+
+        // set up X-axis
+        XAxis xAxis = mChart.getXAxis();
+        xAxis.setTextSize(12f);
+        xAxis.setTextColor(Color.RED);
+        xAxis.setDrawGridLines(false);// grid disappear
+        xAxis.setDrawAxisLine(false);
+        xAxis.setSpaceBetweenLabels(1);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM); //x-axis at bottom
+
+        YAxis rightAxis = mChart.getAxisRight();
+        rightAxis.setDrawTopYLabelEntry(false);
+        rightAxis.setEnabled(false);// right axis disappear
+        rightAxis.setDrawGridLines(false);// grid disappear
+        rightAxis.setDrawAxisLine(false); //  ????
+
+        YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis.setDrawGridLines(false);// grid disappear
+    }
+
+
+    private LineData initData2(){
+        LineData mLdata;
+
+        // arraylist of y-x entry
+        ArrayList<Entry> valsComp1 = new ArrayList<Entry>();
+
+        // arraylist of x-label
+        ArrayList<String> xVals = new ArrayList<String>();
+
+        for(int i=0;i<300;i++){
+            Entry c1e1 = new Entry((float)currentMinute[i] , i); //  y(float)-x(int) pairs
+            valsComp1.add(c1e1);//  add entry ( y(float)-x(int) pair )
+            xVals.add(i/5f+"");  //string as labels
+        }
+
+        // create line-data-set
+        LineDataSet setComp1 = new LineDataSet(valsComp1, "signal 1");
+        setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
+//        setComp1.setDrawCubic(true);//smooth lineChart
+        setComp1.setDrawCircles(false);// no circles
+
+        // a plot can have multiple lines, by using line-data-set array
+        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+        dataSets.add(setComp1);
+
+        // creat line-data with x-labels + line-data-set array
+        LineData data = new LineData(xVals, dataSets);
+        mLdata=data;
+        return mLdata;
+    }
+
+    private void plotLine1(LineChart mChart,LineData mLdata){
+        mChart.setData(mLdata);
+        Legend l = mChart.getLegend();  //set legend position
+        l.setPosition(Legend.LegendPosition.ABOVE_CHART_RIGHT);
+        mChart.invalidate(); // refresh
+    }
+
+
+
+
+    int[] currentMinute=new int[300];
+
+    //-----push 5 ints into the real time plot graph------
+    private void push5(int[] newData){
+        int[] currentMinuteCopy=currentMinute.clone();
+        for (int ii=0;ii<=294;ii=ii+1){
+            currentMinute[ii]=currentMinuteCopy[ii+5];
+        }
+        for (int ii=295;ii<=299;ii=ii+1){
+            currentMinute[ii]=newData[ii-295];
+        }
+    }
+
+
+    // ---to store the current parcel from Matlab server--
+    int[] inputBuffer=new int[500];
+
+    // ----clear the buffer region---called before every read of signal
+    private void emptyBuffer(){
+        for (int ii=0;ii<=499;ii=ii+1){
+            inputBuffer[ii]=0;
+        }
+    }
+
+    //------
+    private void parseParcel(){
+        int firstInt=inputBuffer[0];
+        if (firstInt==(-7007)){  // if it is waveform parcel
+            int[] current5ints=new int[5];
+            for (int ii=0;ii<=4;ii=ii+1){
+                current5ints[ii]=inputBuffer[ii+2];
+            }
+            push5(current5ints);
+        }
+    }
+
+
 
     Button b1_creatTunnel;
     Button b1_writeInt;
@@ -74,6 +225,8 @@ public class SocketIOFragment extends Fragment {
 
         // socket IO fragment
         View rootView = inflater.inflate(R.layout.fragment_socio_drawer, container, false);
+
+        EventBus.getDefault().register(this); // register this class for eventbus
 
 
         // create socket and write data
@@ -221,13 +374,13 @@ public class SocketIOFragment extends Fragment {
                     public void run() {
                         try {
                             Log.i("AAA","before socket-----");
-//                            client = new Socket("192.168.1.208", 8090);
-                            client = new Socket("192.168.0.110", 8090);
+                            client = new Socket("192.168.1.208", 8090);
+//                            client = new Socket("192.168.0.110", 8090);
                             Log.i("AAA", "after socket-----");
                             client.setSoTimeout(60 * 1000);
                             data_in = new DataInputStream(client.getInputStream());
                             currentInt=0;
-                            while(true) read1();
+                            while(true) read1_2();
                         }catch (IOException e) {
                             e.printStackTrace();
                             Log.e("AAA", Log.getStackTraceString(e));
@@ -259,6 +412,8 @@ public class SocketIOFragment extends Fragment {
         });
 
 
+        mChart = (LineChart) rootView.findViewById(R.id.chart1min);
+        initChart(mChart);
 
 
 
@@ -302,6 +457,16 @@ public class SocketIOFragment extends Fragment {
     }
 
 
+    private void read1_1() throws IOException {
+        while (currentInt != -10086) {
+            currentInt = data_in.readInt();
+            if (currentInt<1000) Log.i("AAA", "READ INT" + currentInt);
+        }
+        resetCurrent(); // so that the next parcel could be read
+    }
+
+
+
     private void read2() throws IOException{
 
         while (true) {
@@ -318,13 +483,6 @@ public class SocketIOFragment extends Fragment {
             });
 
         }
-
-
     }
-
-
-
-
-
 
 }

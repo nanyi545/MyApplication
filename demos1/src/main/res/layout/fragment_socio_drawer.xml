@@ -62,5 +62,13 @@
         android:layout_alignTop="@+id/button18"
         android:layout_toRightOf="@+id/button18" />
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart1min"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/button18"
+        android:layout_alignParentRight="true" />
+
+
 
 </RelativeLayout>
