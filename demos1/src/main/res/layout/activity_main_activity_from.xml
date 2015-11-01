@@ -122,4 +122,12 @@
         android:layout_alignRight="@+id/editText_formatTest"
         android:layout_marginTop="66dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="actionBar-ok"
+        android:id="@+id/button21"
+        android:layout_below="@+id/button20"
+        android:layout_alignLeft="@+id/button20" />
+
 </RelativeLayout>

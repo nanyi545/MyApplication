@@ -24,15 +24,22 @@
         <activity
             android:name=".activities.ActionBarActivity1"
             android:label="@string/title_activity_action_bar1"
-            android:theme="@style/AppbarActivity1Theme"
-            android:parentActivityName=".activities.MainActivity_from" >
+            android:parentActivityName=".activities.MainActivity_from"
+            android:theme="@style/AppbarActivity1Theme" >
 
-            <!-- declear a Parent activity  -->
+            <!-- declear a Parent activity -->
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity_from" />
+        </activity>
 
+
+
+        <activity
+            android:name=".activities.ActionBarActivity2"
+            android:theme="@style/AppbarActivity2Theme"
+            android:label="@string/title_activity_appbar2" >
         </activity>
 
 
@@ -41,8 +48,6 @@
             android:name=".activities.DrawerActivity"
             android:label="@string/title_activity_drawer" >
         </activity>
-
-
         <activity
             android:name=".activities.matDesign.RecyclerViewActivity"
             android:label="@string/title_activity_material_design"

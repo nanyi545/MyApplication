@@ -55,14 +55,27 @@ public class MainActivity_from extends AppCompatActivity {
         setContentView(R.layout.activity_main_activity_from);
 
 
+
+        // ---test of actionbar activities---
         Button b_appbar1=(Button)findViewById(R.id.button20);
         b_appbar1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent=new Intent(MainActivity_from.this,ActionBarActivity1.class);
+                Intent mIntent = new Intent(MainActivity_from.this, ActionBarActivity1.class);
                 startActivity(mIntent);
             }
         });
+
+        // ---good demo of APPbar---
+        Button b_appbar2=(Button)findViewById(R.id.button21);
+        b_appbar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent=new Intent(MainActivity_from.this,ActionBarActivity2.class);
+                startActivity(mIntent);
+            }
+        });
+
 
 
 
@@ -282,7 +295,9 @@ public class MainActivity_from extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.appbaractivity2) {
+            Intent mIntent=new Intent(MainActivity_from.this,ActionBarActivity2.class);
+            startActivity(mIntent);
             return true;
         }
 

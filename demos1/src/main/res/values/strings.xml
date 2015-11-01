@@ -38,6 +38,7 @@
     <string name="title_activity_out_line">OutLineActivity</string>
     <string name="title_activity_vp">VPActivity</string>
     <string name="title_activity_action_bar1">APPbar测试</string>
+    <string name="title_activity_appbar2">AppbarActivity2</string>
 
 
 </resources>

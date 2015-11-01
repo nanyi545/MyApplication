@@ -37,5 +37,7 @@
     <string name="title_activity_tint">TintActivity</string>
     <string name="title_activity_out_line">OutLineActivity</string>
 
+    <string name="drawer_open">打开open</string>
+    <string name="drawer_close">关闭cose</string>
 
 </resources>
