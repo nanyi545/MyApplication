@@ -10,7 +10,7 @@
     <string name="title_section2">Anim动画--1</string>
     <string name="title_section3">MP-Chart+scrolView</string>
     <string name="title_section4">Notif+Ripple+style+DispSize</string>
-    <string name="title_section5">eventBus+customView</string>
+    <string name="title_section5">eBus与BroadcastRec+customView</string>
     <string name="title_section6">套接字</string>
     <string name="title_section7">gravity属性</string>
 

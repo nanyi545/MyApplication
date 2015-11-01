@@ -24,6 +24,16 @@ public class MyView1 extends View {
         super(context, set);
     }
 
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        int height=450;  // reset the minimum size of the view???
+        int width=400;
+        setMeasuredDimension(width, height);
+    }
+
     // 重写该方法，进行绘图
     @Override
     protected void onDraw(Canvas canvas)

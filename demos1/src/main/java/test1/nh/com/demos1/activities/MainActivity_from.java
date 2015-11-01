@@ -18,8 +18,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,9 +28,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import test1.nh.com.demos1.R;
 import test1.nh.com.demos1.activities.matDesign.MatDesignPanelActivity;
 import test1.nh.com.demos1.utils.BitmapUtil;
-import test1.nh.com.demos1.R;
 
 public class MainActivity_from extends AppCompatActivity {
     private ImageView cursorIV;
@@ -53,6 +53,19 @@ public class MainActivity_from extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_from);
+
+
+        Button b_appbar1=(Button)findViewById(R.id.button20);
+        b_appbar1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent=new Intent(MainActivity_from.this,ActionBarActivity1.class);
+                startActivity(mIntent);
+            }
+        });
+
+
+
 
         // -------------log 打印测试---String.compareTo 测试
         Button b1=(Button)findViewById(R.id.button1);
@@ -174,36 +187,42 @@ public class MainActivity_from extends AppCompatActivity {
         animBack.setDuration(20);
 
         //animation生命周期方法
-        Animation.AnimationListener animationOpenListener = new Animation.AnimationListener() {
+        final Animation.AnimationListener animationOpenListener = new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 b_anim.setText("--in animation...");
+                Log.i("AAA","start");
             }
             @Override
             public void onAnimationRepeat(Animation animation) {
+                Log.i("AAA","repeat");
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
                 b_anim.setText("start anim");
-                iv_anim.setAnimation(animBack);
-                animBack.startNow();
-
+//                iv_anim.setAnimation(animBack);
+//                animBack.startNow();
+                Log.i("AAA","end");
             }
         };
 
         //新建animation
         final TranslateAnimation animOpen = new TranslateAnimation(0, 100, 0, 100);
-        animOpen.setFillAfter(true);
-        animOpen.setDuration(5000);
+//        animOpen.setRepeatCount(5);
+        animOpen.setFillAfter(false);  // false --> go back to original position , true --> stay at final position
+        animOpen.setDuration(1000);
         animOpen.setAnimationListener(animationOpenListener);
 
 
         b_anim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("AAA", "animation click start");
                 iv_anim.setAnimation(animOpen);
                 animOpen.startNow();
+//                animOpen.start();
+                Log.i("AAA", "animation click end");
             }
         });
 
@@ -212,7 +231,7 @@ public class MainActivity_from extends AppCompatActivity {
 
 
         // 初始化数组测试----------------+位移运算优先级测试-------------
-        EditText arrayLshow=(EditText)findViewById(R.id.editText_arraytest);
+        TextView arrayLshow=(TextView)findViewById(R.id.editText_arraytest);
         //arrayLshow.setText("length:"+callbackBuffer.length); //不赋值无法获取长度
         callbackBuffer = new int[]{1, 2, 33};
 //        arrayLshow.setText("length:" + callbackBuffer.length);
@@ -229,7 +248,7 @@ public class MainActivity_from extends AppCompatActivity {
 
 
         // 时间format测试-----------------------------
-        EditText timeShow=(EditText)findViewById(R.id.editText_formatTest);
+        TextView timeShow=(TextView)findViewById(R.id.editText_formatTest);
         DateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         sdf.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         String mDate="2009-12-01 08_12_23";

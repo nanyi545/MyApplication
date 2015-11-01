@@ -1,7 +1,10 @@
 package test1.nh.com.demos1.fragments;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -59,12 +62,15 @@ public class EventBusDemoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         EventBus.getDefault().register(this); // register this class for eventbus
+
         View rootView = inflater.inflate(R.layout.fragment_eventbusdemo_drawer, container, false);
-        
+
+
+        // demonstrastion of event bus----------
         Button b_addProgress=(Button)rootView.findViewById(R.id.button6);
         p1=(ProgressBar)rootView.findViewById(R.id.id_progressBar1);
-
         b_addProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,16 +80,54 @@ public class EventBusDemoFragment extends Fragment {
         });
 
 
+        //------demonstrastion of broadcast receiver----------
+        // register this activity for AddBarReceiver
+        receiver1=new AddBarReceiver();
+        IntentFilter ifilter=new IntentFilter();
+        ifilter.addAction("whatEverString");
+        mContext.registerReceiver(receiver1, ifilter);
+
+        Button b_addProgress_2=(Button)rootView.findViewById(R.id.button9);
+        b_addProgress_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent("whatEverString");
+                mContext.sendBroadcast(intent1);  // send broadcast receiver
+            }
+        });
+
+
+
         return rootView;
     }
+
+
+    AddBarReceiver receiver1;
+
+    // demonstrastion of broadcast----------
+    public class AddBarReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO Auto-generated method stub
+//            Log.i("AAA","increase progressbar--by broadcast receiver");
+            p1.incrementProgressBy(5);
+            p1.incrementSecondaryProgressBy(5);
+        }
+    }
+
 
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //设置activity label
-        ((DrawerActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+
+        try {    //  called by DrawerActivity
+            ((DrawerActivity) activity).onSectionAttached(
+                    getArguments().getInt(ARG_SECTION_NUMBER));
+        } catch (Exception e) {
+            e.printStackTrace();
+//            Log.i("AAA", "Fragment called not by DrawerActivity");
+        }
         mContext=activity;
     }
 

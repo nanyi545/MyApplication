@@ -23,7 +23,6 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:focusableInTouchMode="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="jump to..."
@@ -76,14 +75,14 @@
         android:layout_below="@+id/button_anim"
         android:src="@drawable/basketbal"/>
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText_arraytest"
         android:layout_below="@+id/imageView1"
         android:layout_alignParentRight="true" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText_formatTest"
@@ -113,5 +112,14 @@
         android:id="@+id/button7"
         android:layout_alignBottom="@+id/imageView1"
         android:layout_toRightOf="@+id/button5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="actionBarActivity"
+        android:id="@+id/button20"
+        android:layout_alignTop="@+id/iv_anim_test"
+        android:layout_alignRight="@+id/editText_formatTest"
+        android:layout_marginTop="66dp" />
 
 </RelativeLayout>

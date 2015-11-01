@@ -14,6 +14,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -206,9 +207,8 @@ public class AnimationFragment extends Fragment {
             // prints the current "y" value
             // getAnimatedValue() method access PropertyValuesHolder (property/value sets being animated)
             // field in the ValueAnimator class
-//            Log.i("AAA", (animation.getAnimatedValue()).toString());
+            Log.i("AAA", (animation.getAnimatedValue()).toString());
         }
-
     }
 
 

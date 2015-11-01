@@ -5,11 +5,19 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="AppbarActivity1Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+
+
     <style name="MDTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <!--divider line，if skip this line，system default will be used-->
         <item name="android:listDivider">@drawable/divider_h_red</item>
-
     </style>
 
     <style name="MDTheme1" parent="Theme.AppCompat.Light.DarkActionBar">

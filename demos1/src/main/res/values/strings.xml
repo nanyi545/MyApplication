@@ -10,7 +10,7 @@
     <string name="title_section2">Animations--1</string>
     <string name="title_section3">MP-Chart+scrolView</string>
     <string name="title_section4">Notif+Ripple+style+DispSize</string>
-    <string name="title_section5">eventBus+customView</string>
+    <string name="title_section5">eBus/BroadcastRec+customView</string>
     <string name="title_section6">socket fragment</string>
     <string name="title_section7">gravity</string>
 
@@ -37,6 +37,7 @@
     <string name="title_activity_tint">TintActivity</string>
     <string name="title_activity_out_line">OutLineActivity</string>
     <string name="title_activity_vp">VPActivity</string>
+    <string name="title_activity_action_bar1">APPbar测试</string>
 
 
 </resources>
