@@ -39,6 +39,7 @@
     <string name="title_activity_vp">VPActivity</string>
     <string name="title_activity_action_bar1">APPbar测试</string>
     <string name="title_activity_appbar2">AppbarActivity2</string>
+    <string name="title_activity_recycler_view3">RecyclerViewActivity3</string>
 
 
 </resources>

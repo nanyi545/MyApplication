@@ -22,8 +22,7 @@
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
     </style>
 
-    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
-    </style>
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView"></style>
 
 
     <style name="MDTheme" parent="android:Theme.Material">
@@ -35,7 +34,6 @@
     <style name="MDTheme1" parent="android:Theme.Material.Light">
         <!-- Customize your theme here. -->
     </style>
-
 
 
     <style name="style1">
@@ -56,6 +54,14 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowFrame">@drawable/window_border</item>
         <item name="android:windowBackground">@drawable/basketbal</item>
+    </style>
+    >
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
 </resources>

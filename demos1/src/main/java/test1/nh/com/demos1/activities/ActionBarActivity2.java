@@ -153,11 +153,12 @@ public class ActionBarActivity2 extends AppCompatActivity {
         // toolbar.setLogo(R.drawable.ic_launcher);
         mToolbar.setTitle("Rocko");// 标题的文字需在setSupportActionBar之前，不然会无效
         // toolbar.setSubtitle("副标题");
+//        mToolbar.setNavigationIcon(R.drawable.ic_launcher); // 设置navigation icon 无效
         setSupportActionBar(mToolbar);
 		/* 这些通过ActionBar来设置也是一样的，注意要在setSupportActionBar(toolbar);之后，不然就报错了 */
         // getSupportActionBar().setTitle("标题");
         // getSupportActionBar().setSubtitle("副标题");
-        // getSupportActionBar().setLogo(R.drawable.ic_launcher);
+//        getSupportActionBar().setLogo(R.drawable.ic_launcher); //logo 不是navigation icon
 
 		/* 菜单的监听可以在toolbar里设置，也可以像ActionBar那样，通过下面的两个回调方法来处理 */
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

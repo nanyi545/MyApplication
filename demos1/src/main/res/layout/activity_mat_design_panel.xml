@@ -63,4 +63,12 @@
         android:layout_below="@+id/button11"
         android:layout_alignParentLeft="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RV3-drag"
+        android:id="@+id/button22"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/button8" />
+
 </RelativeLayout>

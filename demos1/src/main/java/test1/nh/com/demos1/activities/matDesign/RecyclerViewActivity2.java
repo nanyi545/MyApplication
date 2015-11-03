@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import test1.nh.com.demos1.Adapters.MyRVAdapter;
+import test1.nh.com.demos1.activities.matDesign.adapter_MD.MyRVAdapter;
 import test1.nh.com.demos1.R;
 import test1.nh.com.demos1.activities.matDesign.utils_MD.DividerGridItemDecoration;
 

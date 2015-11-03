@@ -23,7 +23,7 @@ public class ActionBarActivity1 extends AppCompatActivity {
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
-        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayHomeAsUpEnabled(true); //  an icon to indicate go back , in the position of naviIcon
 
     }
 
@@ -52,6 +52,9 @@ public class ActionBarActivity1 extends AppCompatActivity {
                 Log.i("AAA", "action_balance");
                 return true;
             case R.id.action_clock:
+                Log.i("AAA", "action_clock");
+                return true;
+            case R.id.action_search:
                 Log.i("AAA", "action_clock");
                 return true;
             default:

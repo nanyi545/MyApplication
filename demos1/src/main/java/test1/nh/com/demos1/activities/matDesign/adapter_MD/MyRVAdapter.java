@@ -1,4 +1,4 @@
-package test1.nh.com.demos1.Adapters;
+package test1.nh.com.demos1.activities.matDesign.adapter_MD;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

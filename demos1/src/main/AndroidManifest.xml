@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="test1.nh.com.demos1" >
+    package="test1.nh.com.demos1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -11,10 +11,10 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity_from"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
             android:name=".activities.ActionBarActivity1"
             android:label="@string/title_activity_action_bar1"
             android:parentActivityName=".activities.MainActivity_from"
-            android:theme="@style/AppbarActivity1Theme" >
+            android:theme="@style/AppbarActivity1Theme">
 
             <!-- declear a Parent activity -->
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -33,58 +33,47 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity_from" />
         </activity>
-
-
-
         <activity
             android:name=".activities.ActionBarActivity2"
-            android:theme="@style/AppbarActivity2Theme"
-            android:label="@string/title_activity_appbar2" >
-        </activity>
-
-
-
+            android:label="@string/title_activity_appbar2"
+            android:theme="@style/AppbarActivity2Theme"></activity>
         <activity
             android:name=".activities.DrawerActivity"
-            android:label="@string/title_activity_drawer" >
-        </activity>
+            android:label="@string/title_activity_drawer"></activity>
         <activity
             android:name=".activities.matDesign.RecyclerViewActivity"
             android:label="@string/title_activity_material_design"
-            android:theme="@style/MDTheme" > <!-- divider line is defined in this theme -->
+            android:theme="@style/MDTheme"> <!-- divider line is defined in this theme -->
             <!-- android:theme="@style/CrazyTheme" -->
         </activity>
         <activity
             android:name=".activities.matDesign.MatDesignPanelActivity"
-            android:label="@string/title_activity_mat_design_panel" >
-        </activity>
+            android:label="@string/title_activity_mat_design_panel"></activity>
         <activity
             android:name=".activities.matDesign.ElevationActivity"
             android:label="@string/title_activity_elevation"
-            android:theme="@style/MDTheme1" >
-        </activity>
+            android:theme="@style/MDTheme1"></activity>
         <activity
             android:name=".activities.matDesign.RecyclerViewActivity2"
             android:label="@string/title_activity_recycler_view2"
-            android:theme="@style/MDTheme" > <!-- divider line is defined in this theme -->
+            android:theme="@style/MDTheme"> <!-- divider line is defined in this theme -->
         </activity>
         <activity
             android:name=".activities.matDesign.CardViewActivity"
             android:label="@string/title_activity_card_view"
-            android:theme="@style/MDTheme1" >
-        </activity>
+            android:theme="@style/MDTheme1"></activity>
         <activity
             android:name=".activities.matDesign.TintActivity"
-            android:label="@string/title_activity_tint" >
-        </activity>
+            android:label="@string/title_activity_tint"></activity>
         <activity
             android:name=".activities.matDesign.OutLineActivity"
-            android:label="@string/title_activity_out_line" >
-        </activity>
+            android:label="@string/title_activity_out_line"></activity>
         <activity
             android:name=".activities.matDesign.VPActivity"
-            android:label="@string/title_activity_vp" >
-        </activity>
+            android:label="@string/title_activity_vp"></activity>
+        <activity
+            android:name=".activities.matDesign.RecyclerViewActivity3"
+            android:label="@string/title_activity_recycler_view3"></activity>
     </application>
 
 </manifest>

@@ -7,14 +7,20 @@
         android:id="@+id/action_clock"
         android:icon="@drawable/ic_alarm_add_black_18dp"
         android:title="clock??"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/action_balance"
         android:icon="@drawable/ic_account_balance_black_24dp"
         android:title="balance??"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
 
     <item android:id="@+id/action_settings1"
         android:title="action1"

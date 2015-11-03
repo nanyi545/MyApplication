@@ -15,6 +15,7 @@ public class MatDesignPanelActivity extends AppCompatActivity {
     Button b_recyclerView1;
     Button b_elevation;
     Button b_recyclerView2;
+    Button b_recyclerView3;
     Button b_cardView1;
     Button b_tint;
     Button b_outline;
@@ -55,6 +56,18 @@ public class MatDesignPanelActivity extends AppCompatActivity {
                 startActivity(mIntent);
             }
         });
+
+
+        // recycler view 3: drag-----> drag & drop and swipe-to-dismiss
+        b_recyclerView3=(Button)findViewById(R.id.button22);
+        b_recyclerView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent=new Intent(MatDesignPanelActivity.this,RecyclerViewActivity3.class);
+                startActivity(mIntent);
+            }
+        });
+
 
         //card view 1: what is card View
         b_cardView1=(Button)findViewById(R.id.button11);

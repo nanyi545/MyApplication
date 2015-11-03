@@ -3,12 +3,21 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <!-- toolbar（actionbar）颜色 -->
+        <item name="colorPrimary">#4876FF</item>
+        <!-- 状态栏（android status bar）颜色 -->
+        <item name="colorPrimaryDark">#3A5FCD</item>
+
     </style>
 
     <style name="AppbarActivity1Theme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <!-- toolbar（actionbar）颜色 -->
+        <item name="colorPrimary">#4876FF</item>
+        <!-- 状态栏（android status bar）颜色 -->
+        <item name="colorPrimaryDark">#3A5FCD</item>
     </style>
 
     <style name="AppbarActivity2Theme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -22,8 +31,7 @@
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
     </style>
 
-    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
-    </style>
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView"></style>
 
 
     <style name="MDTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -35,7 +43,6 @@
     <style name="MDTheme1" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
-
 
 
     <style name="style1">
@@ -57,5 +64,14 @@
         <item name="android:windowFrame">@drawable/window_border</item>
         <item name="android:windowBackground">@drawable/basketbal</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
