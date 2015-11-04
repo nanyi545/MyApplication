@@ -5,12 +5,14 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -23,7 +25,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
 
@@ -52,6 +54,8 @@ public class MPchartDemoFragment extends Fragment {
 
     private BarChart mBarChart;
     private BarData mBardata;
+
+    private PieChart mPieChart;
 
 
 
@@ -96,6 +100,11 @@ public class MPchartDemoFragment extends Fragment {
         mBardata=generateBarData(1,counts, 12);
         mBarChart.setData(mBardata);
 
+
+        // plot 4-----pie chart----
+        mPieChart=(PieChart) rootView.findViewById(R.id.sta_pchart);
+        initPieChart(mPieChart);
+        setData(mPieChart,12);  // show anomaly percentage
 
         return rootView;
     }
@@ -265,37 +274,98 @@ public class MPchartDemoFragment extends Fragment {
 
 
     /**
-     * generates less data (1 DataSet, 4 values)
-     * @return
+     * set piechart data , anaValue%
+     * @param mPieChart
+     * @param anaValue
      */
-    protected PieData generatePieData() {
+    private void setData(PieChart mPieChart, int anaValue) {
+        mPieChart.setCenterText(generateCenterSpannableText("text at center\npercent\n"+anaValue+"%"));
 
-        int count = 4;
+        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+        // IMPORTANT: In a PieChart, no values (Entry) should have the same
+        // xIndex (even if from different DataSets), since no values can be
+        // drawn above each other.
+        yVals1.add(new Entry((float) anaValue, 0));
+        yVals1.add(new Entry((float) (100-anaValue), 0));
 
-        ArrayList<Entry> entries1 = new ArrayList<Entry>();
+
         ArrayList<String> xVals = new ArrayList<String>();
 
-        xVals.add("Quarter 1");
-        xVals.add("Quarter 2");
-        xVals.add("Quarter 3");
-        xVals.add("Quarter 4");
+        xVals.add("1");xVals.add("2");
 
-        for(int i = 0; i < count; i++) {
-            xVals.add("entry" + (i+1));
+        PieDataSet dataSet = new PieDataSet(yVals1,null);
+        dataSet.setSliceSpace(2f);
+        dataSet.setSelectionShift(5f);
+        dataSet.setDrawValues(false);  // does not show values
 
-            entries1.add(new Entry((float) (Math.random() * 60) + 40, i));
-        }
+        // add a lot of colors
+        ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        PieDataSet ds1 = new PieDataSet(entries1, "Quarterly Revenues 2015");
-        ds1.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        ds1.setSliceSpace(2f);
-        ds1.setValueTextColor(Color.WHITE);
-        ds1.setValueTextSize(12f);
+        colors.add(getResources().getColor(R.color.Red500));  // slice 1 color
+        colors.add(getResources().getColor(R.color.Teal200));  // slice 2 color
 
-        PieData d = new PieData(xVals, ds1);
+        dataSet.setColors(colors);
+        //dataSet.setSelectionShift(0f);
 
-        return d;
+        PieData data = new PieData(xVals, dataSet);
+        data.setValueFormatter(new PercentFormatter());
+        data.setValueTextSize(11f);
+
+        data.setValueTextColor(Color.WHITE);
+        mPieChart.setData(data);
+
+        // undo all highlights
+        mPieChart.highlightValues(null);
+
+        mPieChart.invalidate();
     }
+
+    private void initPieChart(PieChart mPieChart){
+        mPieChart.setUsePercentValues(true);
+        mPieChart.setDrawSliceText(false); // hide labels
+
+        mPieChart.setRotationAngle(270f);
+        // enable rotation of the chart by touch
+        mPieChart.setRotationEnabled(false);
+
+        Legend l1=mPieChart.getLegend();//remove the legend
+        l1.setEnabled(false);  //remove the legend
+
+        mPieChart.setDescription("");
+        mPieChart.setExtraOffsets(5, 10, 5, 5);
+
+        mPieChart.setDragDecelerationFrictionCoef(0.95f);
+
+        mPieChart.setDrawHoleEnabled(true);
+        mPieChart.setHoleColorTransparent(true);
+
+        mPieChart.setTransparentCircleColor(Color.WHITE);
+
+        mPieChart.setTransparentCircleAlpha(0);
+        mPieChart.setTransparentCircleRadius(71f);
+
+        mPieChart.setHoleRadius(78f);
+
+        mPieChart.setDrawCenterText(true);
+
+    }
+
+
+
+
+    private SpannableString generateCenterSpannableText(String str) {
+        SpannableString s = new SpannableString(str);
+//        s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
+//        s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
+//        s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
+//        s.setSpan(new RelativeSizeSpan(.8f), 14, s.length() - 15, 0);
+//        s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
+//        s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
+        return s;
+    }
+
+
+
 
 
     private String[] mLabels = new String[] { "Company A", "Company B", "Company C", "Company D", "Company E", "Company F" };

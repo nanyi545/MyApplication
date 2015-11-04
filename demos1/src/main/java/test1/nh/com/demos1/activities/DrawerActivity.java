@@ -18,6 +18,7 @@ import test1.nh.com.demos1.fragments.AnimationFragment;
 import test1.nh.com.demos1.fragments.EventBusDemoFragment;
 import test1.nh.com.demos1.fragments.GravityFragment;
 import test1.nh.com.demos1.fragments.MPchartDemoFragment;
+import test1.nh.com.demos1.fragments.MultiThreadFrag;
 import test1.nh.com.demos1.fragments.NavigationDrawerFragment;
 import test1.nh.com.demos1.fragments.Section4Fragment;
 import test1.nh.com.demos1.fragments.SectionFragment;
@@ -57,6 +58,11 @@ public class DrawerActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (position){
+            case 7:  //position+1=8    section 8 -->multiThread fragment
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, MultiThreadFrag.newInstance(position + 1))
+                        .commit();
+                break;
             case 6:  //position+1=7    section 7 -->GravityFragment
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, GravityFragment.newInstance(position + 1))

@@ -13,6 +13,7 @@
     <string name="title_section5">eBus/BroadcastRec+customView</string>
     <string name="title_section6">socket fragment</string>
     <string name="title_section7">gravity</string>
+    <string name="title_section8">java multithread</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

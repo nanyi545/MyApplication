@@ -54,9 +54,15 @@ public class SectionFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //设置activity label
-        ((DrawerActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        //如果attach到drawerActivity上 设置activity label
+        try {    //  called by DrawerActivity
+            ((DrawerActivity) activity).onSectionAttached(
+                    getArguments().getInt(ARG_SECTION_NUMBER));
+        } catch (Exception e) {
+            e.printStackTrace();
+//            Log.i("AAA", "Fragment called not by DrawerActivity");
+        }
+
     }
 
 

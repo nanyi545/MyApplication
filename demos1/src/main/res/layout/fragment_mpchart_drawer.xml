@@ -37,6 +37,14 @@
         android:layout_width="match_parent"
         android:layout_height="250dp" />
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_below="@+id/barChart1"
+        android:id="@+id/sta_pchart"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+
+
+
 
 
 </RelativeLayout>
