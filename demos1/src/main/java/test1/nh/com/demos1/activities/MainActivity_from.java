@@ -232,9 +232,11 @@ public class MainActivity_from extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("AAA", "animation click start");
-                iv_anim.setAnimation(animOpen);
-                animOpen.startNow();
-//                animOpen.start();
+//                iv_anim.setAnimation(animOpen);
+//                animOpen.startNow();
+//                animOpen.start();  // NOT WORKING WELL
+                iv_anim.startAnimation(animOpen);  // move  // this is OK
+
                 Log.i("AAA", "animation click end");
             }
         });

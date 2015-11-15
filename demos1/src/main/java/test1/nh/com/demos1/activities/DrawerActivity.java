@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import test1.nh.com.demos1.R;
 import test1.nh.com.demos1.fragments.AnimationFragment;
+import test1.nh.com.demos1.fragments.AnimationFragment2;
 import test1.nh.com.demos1.fragments.EventBusDemoFragment;
 import test1.nh.com.demos1.fragments.GravityFragment;
 import test1.nh.com.demos1.fragments.MPchartDemoFragment;
@@ -58,6 +59,12 @@ public class DrawerActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (position){
+            case 8:  //position+1=9    section 9 -->animation fragment 2
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, AnimationFragment2.newInstance(position + 1))
+                        .commit();
+                break;
+
             case 7:  //position+1=8    section 8 -->multiThread fragment
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, MultiThreadFrag.newInstance(position + 1))

@@ -121,20 +121,23 @@
     <color name="PurpleA200">#e040fb</color>
     <color name="PurpleA400">#d500f9</color>
     <color name="PurpleA700">#aa00ff</color>
-
-
-
-
-
-
-    <!-- Blue -->
+    <!-- Material design   Blue -->
+    <color name="Blue50">#e7e9fd</color>
+    <color name="Blue100">#d0d9ff</color>
+    <color name="Blue200">#afbfff</color>
+    <color name="Blue300">#91a7ff</color>
     <color name="Blue400">#738FFE</color>
     <color name="Blue500">#5677FC</color>
     <color name="Blue600">#4E6CEF</color>
     <color name="Blue700">#455EDE</color>
     <color name="Blue800">#3B50CE</color>
-    <color name="Blue900">#2B36B1</color>
-    <color name="Blue_">@color/Blue500</color>
+    <color name="Blue900">#2A36B1</color>
+    <color name="BlueA100">#a6baff</color>
+    <color name="BlueA200">#6889ff</color>
+    <color name="BlueA400">#4d73ff</color>
+    <color name="BlueA700">#4d69ff</color>
+    <color name="Blue_">@color/Blue400</color>
+
 
     <!-- station list -->
     <color name="station_list_name_Cyan700">#0097A7</color>

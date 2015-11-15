@@ -145,6 +145,8 @@ public class MPchartDemoFragment extends Fragment {
     }
 
     private void initChart(LineChart mChart){
+
+        //   mChart.setDrawGridBackground(false);  // 之后设置backgroundcolor才有效
         mChart.setDrawBorders(true);//?? drawing the chart borders (lines surrounding the chart).
 
         // set up X-axis
